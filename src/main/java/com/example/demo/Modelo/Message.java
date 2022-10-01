@@ -29,7 +29,7 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name = "id")
-    @JsonIgnoreProperties({"messages","reservation"})
+    @JsonIgnoreProperties({"messages","reservations"})
     private Machine machine;
     
     @ManyToOne

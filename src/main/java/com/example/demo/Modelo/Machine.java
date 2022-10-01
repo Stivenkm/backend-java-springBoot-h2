@@ -45,7 +45,7 @@ public class Machine {
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "machine")
     @JsonIgnoreProperties({"machine", "messages"})
-    private List<Reservation> machines;
+    private List<Reservation> reservations;
 
     public Integer getId() {
         return id;
@@ -103,13 +103,13 @@ public class Machine {
         this.messages = messages;
     }
 
-    public List<Reservation> getMachines() {
-        return machines;
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setMachines(List<Reservation> machines) {
-        this.machines = machines;
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
- 
-    
+
+      
 }
