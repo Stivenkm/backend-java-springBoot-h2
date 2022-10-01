@@ -28,7 +28,7 @@ public class Message {
     private String messageText;
 
     @ManyToOne
-    @JoinColumn(name = "Id")
+    @JoinColumn(name = "id")
     @JsonIgnoreProperties({"messages","reservation"})
     private Machine machine;
     

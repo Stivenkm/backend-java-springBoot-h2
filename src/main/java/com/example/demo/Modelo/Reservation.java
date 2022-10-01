@@ -32,13 +32,13 @@ public class Reservation {
     private String status="created";
     
     @ManyToOne
-    @JoinColumn(name = "Id")
-    @JsonIgnoreProperties({"reservation"})
+    @JoinColumn(name = "id")
+    @JsonIgnoreProperties({"reservations"})
     private Machine machine;
     
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties({"reservation","nessages"})
+    @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
     
     private String score;
