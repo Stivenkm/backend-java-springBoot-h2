@@ -50,7 +50,7 @@ public class ReservationControlador {
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation update(@RequestBody Reservation reservation){
-        return reservationService.save(reservation);
+        return reservationService.update(reservation);
     }
 
     @DeleteMapping("/{id}")

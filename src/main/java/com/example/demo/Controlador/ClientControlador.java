@@ -50,7 +50,7 @@ public class ClientControlador {
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Client update(@RequestBody Client client) {
-        return clientService.save(client);
+        return clientService.update(client);
     }
 
     @DeleteMapping("/{id}")
