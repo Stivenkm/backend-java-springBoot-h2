@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ClientServicio {
+
     @Autowired
     private ClientRepositorio clientRepositorio;
 
@@ -38,6 +39,29 @@ public class ClientServicio {
             } else {
                 return client;
             }
+        }
+    }
+
+    public Client update(Client client) {
+        if (client.getIdClient() != null) {
+            Optional<Client> e = clientRepositorio.getClient(client.getIdClient());
+            if (!e.isEmpty()) {
+                if (client.getName() != null) {
+                    e.get().setName(client.getName());
+                }
+                if (client.getAge() != null) {
+                    e.get().setAge(client.getAge());
+                }
+                if (client.getPassword() != null) {
+                    e.get().setPassword(client.getPassword());
+                }
+                clientRepositorio.save(e.get());
+                return e.get();
+            } else {
+                return client;
+            }
+        } else {
+            return client;
         }
     }
 

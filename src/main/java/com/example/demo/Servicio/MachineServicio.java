@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MachineServicio {
+
     @Autowired
     private MachineRepositorio machineRepositorio;
 
@@ -40,7 +41,32 @@ public class MachineServicio {
             }
         }
     }
-    
+
+    public Machine update(Machine machine) {
+        if (machine.getId() != null) {
+            Optional<Machine> e = machineRepositorio.getMachine(machine.getId());
+            if (!e.isEmpty()) {
+                e.get().setName(machine.getName());
+            }
+            if (machine.getBrand() != null) {
+                e.get().setBrand(machine.getBrand());
+            }
+            if (machine.getYear() != null) {
+                e.get().setYear(machine.getYear());
+            }
+            if (machine.getDescription() != null) {
+                e.get().setDescription(machine.getDescription());
+            }
+            if (machine.getCategory() != null) {
+                e.get().setCategory(machine.getCategory());
+            }
+            machineRepositorio.save(e.get());
+            return e.get();
+        } else {
+            return machine;
+        }
+    }
+
     public boolean deleteMachine(int machineId) {
         Boolean d = getMachine(machineId).map(machine
                 -> {
